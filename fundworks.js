@@ -4,5 +4,5 @@ function fundworks(costURL){
   2. then searches for divs with classes "freport","fpatch" or "fbadge"
   3. inserts its reports there
   */
-  
+  console.log("hello world");
 }
