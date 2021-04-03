@@ -1,0 +1,114 @@
+{
+  "fdate": "2021-04-03T06:45:32.337Z",
+  "totalcosts": 15.000, //Costs per month
+  "currentcapital": 23.598, //Capital available to date
+  "startcapital": 14.000, //Initial capital to start from
+  "costs":[
+    {
+      "name": "XYZ.de",
+      "category": "hosting",
+      "amount": 50,
+      "info":"Tarif Basic XL 1TB. Upgrade from Tarif Basic M due to higher traffic on the site."
+    },
+    {
+      "name": "DomainL.de",
+      "category": "hosting",
+      "amount": 9,
+      "info":"For holding three domains: ..."
+    },
+    {
+      "name": "Writing Articles",
+      "category": "content creation",
+      "amount": 23,
+      "info":""
+    },
+    {
+      "name": "Matlab License",
+      "category": "Licenses",
+      "amount": 120,
+      "info":"License: Ultimate Pro Demo Licence "
+    }
+  ],
+  "capitalsources": [
+    {
+      "month": "2021-04-03T06:45:32.337Z",
+      "sources": [
+        {
+          "name": "Donations",
+          "category": 1,
+          "amount": 8,
+          "recurring": 0,
+          "info":""
+        },
+        {
+          "name": "Memberships",
+          "category": 1,
+          "amount": 8,
+          "recurring": 1,
+          "info":""
+        },
+        {
+          "name": "Patreon",
+          "category": 2,
+          "amount": 15,
+          "recurring": 0,
+          "info":""
+        },
+        {
+          "name": "Ads",
+          "category": 2,
+          "amount": 23,
+          "recurring": 0,
+          "info":""
+        },
+        {
+          "name": "Subsidies",
+          "category": 2,
+          "amount": 100,
+          "recurring": 1,
+          "info":""
+        }
+      ]
+    },
+    {
+      "month": "2021-03-03T06:45:32.337Z",
+      "sources": [
+        {
+          "name": "Donations",
+          "category": 1,
+          "amount": 100,
+          "recurring": 0,
+          "info":""
+        },
+        {
+          "name": "Memberships",
+          "category": 1,
+          "amount": 8,
+          "recurring": 1,
+          "info":""
+        },
+        {
+          "name": "Patreon",
+          "category": 2,
+          "amount": 15,
+          "recurring": 0,
+          "info":""
+        },
+        {
+          "name": "Ads",
+          "category": 2,
+          "amount": 23,
+          "recurring": 0,
+          "info":""
+        },
+        {
+          "name": "Subsidies",
+          "category": 2,
+          "amount": 100,
+          "recurring": 1,
+          "info":""
+        }
+      ]
+    }
+  ]
+}
