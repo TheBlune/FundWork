@@ -19,7 +19,7 @@ The financial report gains user trust, let’s them participate in optimizing yo
 ## Getting Started
 Fundwork relies on [Jquery](https://jquery.com/) and [Bootstrap](https://getbootstrap.com/). So make Sure to have them ready before loading a fundwork report, patch or badge.
 
-###CDN
+### CDN
 Add these to the html-page you wish use Fundwork on:
 
     <script src="https://cdn.jsdelivr.net/gh/TheBlune/FundWork@0.0.4/fundwork.js"></script>
