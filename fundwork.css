@@ -124,14 +124,47 @@ section.fwcapital .fwcapitaltable table:last-child {
   section.fwmcosts .fwmcostscontainer {
     display:block;
   }
-  section.fwmcosts #fwpie,
   section.fwcapital #fwline,
   section.fwmcosts .fwcosttable,
   section.fwcapital .fwcapitaltable {
     width: 100%;
     padding-left: 0;
+    margin-bottom:2rem;
+  }
+  section.fwheader,
+  section.fwmcosts,
+  section.fwcapital {
+    text-align:center;
+  }
+  section.fwmcosts .fwcosttable table,
+  section.fwcapital .fwcapitaltable table,
+  section.fwheader ul {
+      text-align:left;
+  }
+
+  section.fwheader > ul {
+    display: inline-flex;
+  }
+  section.fwmcosts span,
+  section.fwcapital span {
+    float: none !important;
+  }
+  section.fwmcosts #fwpie {
+    width: 80%;
+    padding-left: 0;
+    margin: 0 auto 2rem auto;
   }
   section.fwsummary > div {
     width: 100%;
+    margin: 2rem;
+  }
+
+  section.fwcapital .fwcapitaltable {
+    top: 0;
+  }
+  section.fwmcosts a {
+    float: none !important;
+    right: auto !important;
+    bottom:auto !important;
   }
 }

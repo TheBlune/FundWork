@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>ocr example</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <!--<link rel="stylesheet" href="style.css">-->
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+  </script>
+  <script src="script.js" charset="UTF-8"></script>
+  <script src='https://unpkg.com/tesseract.js@v2.0.0-alpha.11/dist/tesseract.min.js'></script>
+</head>
+
+<body>
+  <label for="image">Choose a picture to recognize:</label>
+
+  <input type="file"
+       id="image" name="image"
+       accept="image/png, image/jpeg">
+
+</body>
+</html>
