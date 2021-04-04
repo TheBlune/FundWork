@@ -19,7 +19,7 @@ Take a look at the [Demo](https://theblune.github.io/FundWork/)
 Fundwork relies on [Jquery](https://jquery.com/) and [Bootstrap](https://getbootstrap.com/). So make Sure to have them ready before loading a fundwork report, patch or badge.
 
 ###CDN
-Add these to the hmlt-page you wish use Fundwork on:
+Add these to the html-page you wish use Fundwork on:
 
     <script src="https://cdn.jsdelivr.net/gh/TheBlune/FundWork@0.0.4/fundwork.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TheBlune/FundWork@0.0.4/fundwork.css">
