@@ -20,12 +20,14 @@ The financial report gains user trust, let’s them participate in optimizing yo
 Fundwork relies on [Jquery](https://jquery.com/) and [Bootstrap](https://getbootstrap.com/). So make Sure to have them ready before loading a fundwork report, patch or badge.
 
 ### CDN
-Add these to the html-page you wish use Fundwork on:
+Add these to the html-page you wish to use Fundwork on:
 
     <script src="https://cdn.jsdelivr.net/gh/TheBlune/FundWork@0.0.4/fundwork.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TheBlune/FundWork@0.0.4/fundwork.css">
 
-then call fundwork(costLocation,costLink,message,neededBuffer) in your .js-file.
+then call 
+  fundwork(costLocation,costLink,message,neededBuffer) 
+in your .js-file.
 
 Fundwork will try to load a costs.json file to get the data needed to display. You will need to prepare this file, before using fundwork. Find info here:  [FundworkCostTemplate](https://github.com/TheBlune/FundworkCostTemplate)
 
