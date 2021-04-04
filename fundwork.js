@@ -8,7 +8,7 @@ function fundwork(costLocation,costLink,message,neededBuffer){
 
     if (costLocation === 'Github') {
       //Preformat cost URL
-      costURL = 'https://raw.githubusercontent.com/'+costLink+'/main/costs.json';
+      costURL = 'https://raw.githubusercontent.com/'+costLink+'/costs.json';
     } else {
       costURL = costLink;
     }

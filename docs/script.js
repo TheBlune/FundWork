@@ -12,5 +12,5 @@ $( document ).ready(function() {
   //console.log(message);
   //initiate
   //https://raw.githubusercontent.com/TheBlune/FundworksCostTemplate/main/costs.json
-  fundwork("Github","TheBlune/FundworkCostTemplate",message,2);
+  fundwork("Github","TheBlune/FundworkCostTemplate/main",message,2);
 });
