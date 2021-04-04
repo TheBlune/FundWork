@@ -1,0 +1,134 @@
+.fwred {
+  color: #FF6384; /*#dc3545*/
+}
+.fwgreen {
+  color: #4BC0C0;
+}
+.fw1 {
+  font-size: 2rem; /*2.5*/
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.fw1 span {
+  font-weight: 400;
+}
+.fw2 {
+  font-size: 1.75rem; /*2*/
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.fw3 {
+  font-size: 1.75rem; /*1,75*/
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.fw3 span {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+.fw4 {
+  font-size: 1.5rem;
+}
+.fwheader > ul {
+  margin-top: 1rem;
+}
+.fwheader li {
+ margin: 0.4rem;
+}
+
+.freport section {
+  margin-bottom: 50px;
+}
+section.fwsummary {
+  display: flex; /*flex-wrap:wrap for responsive*/
+  justify-content: space-between;
+  /*flex-wrap: wrap;*/
+}
+section.fwsummary div.fwcosts,
+section.fwsummary div.fwcapital,
+section.fwsummary div.fwoperation {
+  /*flex: 0 0 calc(960px * 999 - 100% * 999);*/
+  white-space: nowrap;
+}
+
+section.fwsummary .fwcapital .fw1 span {
+  color:black;
+  font-size: 1.0rem;
+}
+section.fwmcosts .fwmcostscontainer {
+  display: flex; /*flex-wrap:wrap for responsive*/
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+#gitcostsbutton {
+  float:right;
+  position: relative;
+  bottom: 40px;
+  right: 30px;
+}
+section.fwcapital .fwcapitalcontainer {
+  display: flex; /*flex-wrap:wrap for responsive*/
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+section.fwmcosts #fwpie {
+  /*width: 30%;*/
+  flex:1 1 30%;
+}
+section.fwcapital #fwline {
+  flex: 4 1 30%;
+  position: relative;
+  top:-20px;
+}
+section.fwmcosts span.lastupdated,
+section.fwcapital span.lastupdated {
+  float:right;
+}
+section.fwmcosts .fwcosttable {
+  flex:3 1 20%;
+  padding-left: 5%;
+  font-size: 1.5rem;
+}
+section.fwcapital .fwcapitaltable {
+  flex:2 1 300px;
+  padding-left: 2%;
+  font-size: 1.5rem;
+  position:relative;
+  top: -72px;
+}
+section.fwcapital .fwcapitaltable .fw3 {
+  margin-bottom: 50px;
+}
+
+section.fwmcosts .fwcosttable table,
+section.fwcapital .fwcapitaltable table{
+  width: calc(100% - 1rem);
+  margin-left: 1rem;
+}
+section.fwmcosts .fwcosttable table tr td:first-child,
+section.fwcapital .fwcapitaltable table tr td:first-child {
+  padding-left: 10px;
+}
+section.fwmcosts .fwcosttable table tr td:last-child,
+section.fwmcosts .fwcosttable table tr th:last-child,
+section.fwcapital .fwcapitaltable table tr td:last-child,
+section.fwcapital .fwcapitaltable table tr th:last-child {
+  text-align:right;
+}
+section.fwcapital .fwcapitaltable table:last-child {
+  border-top: 2px solid black;
+  margin-top: 10px;
+}
+
+@media (min-width: 576px) {
+  section.fwsummary {
+    display:block:
+  }
+}
