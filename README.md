@@ -38,3 +38,8 @@ Fundwork takes 4 arguments:
 2. costLink: The Permalink to the costs.json-file. Can be either a direct link or in case of costLocation = "Github":  [Repository]/[relativePath], like e.g. for the demo here: "TheBlune/FundworkCostTemplate"
 3. Message: A personalizable Message to add to the top of a fundwork-report. See [Example fundwork.js call for templates](https://github.com/TheBlune/FundWork/blob/8c8cef6722daf90d903f8a8abe49ae581e295357/docs/script.js)
 4. neededBuffer: Is used to emphasize to the readers, that the project is either "under-funded" or already enough funded. Put the number of Months in here, that you want your project to be a operational for (based on current Capital).
+
+## Usage Examples 
+Here you may find real-world examples of pages using this framework.
+### Websites
+- https://thebluneproject.de/finances/
