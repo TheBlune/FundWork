@@ -11,7 +11,7 @@
 Take a look at the [Demo](https://theblune.github.io/FundWork/)
  The financial report gains user trust, let’s them participate in optimizing your costs and lets potential donors/members/etc. make an informed decision on if they want to help sustaining this project.
 
-![Image of the Full Report]()
+![Image of the Full Report](https://github.com/TheBlune/FundWork/blob/86aec72fbf992ade71bfe6ad18c90a80fe4e1f20/docs/report-image.png)
 
  keywords: finances, cost reporting, sustaining microsites and microservices
 
