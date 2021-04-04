@@ -5,26 +5,30 @@
 
  - fully responsive One-Pager Template, Short-Report-Patches and Status-Badges for you to include where needed
  - Method to organize costs on Github (with a free account there)
+ 
  In The future:
  - Offline-tool, to help updating finances easily
 
-Take a look at the [Demo](https://theblune.github.io/FundWork/)
- The financial report gains user trust, let’s them participate in optimizing your costs and lets potential donors/members/etc. make an informed decision on if they want to help sustaining this project.
+Take a look at the [Demo](https://theblune.github.io/FundWork/).
 
-![Image of the Full Report]()
+The financial report gains user trust, let’s them participate in optimizing your costs and lets potential donors/members/etc. make an informed decision on if they want to help sustaining this project.
+
+![Image of the Full Report](https://github.com/TheBlune/FundWork/blob/86aec72fbf992ade71bfe6ad18c90a80fe4e1f20/docs/report-image.png)
 
  keywords: finances, cost reporting, sustaining microsites and microservices
 
 ## Getting Started
 Fundwork relies on [Jquery](https://jquery.com/) and [Bootstrap](https://getbootstrap.com/). So make Sure to have them ready before loading a fundwork report, patch or badge.
 
-###CDN
-Add these to the hmlt-page you wish use Fundwork on:
+### CDN
+Add these to the html-page you wish to use Fundwork on:
 
     <script src="https://cdn.jsdelivr.net/gh/TheBlune/FundWork@0.0.4/fundwork.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TheBlune/FundWork@0.0.4/fundwork.css">
 
-then call fundwork(costLocation,costLink,message,neededBuffer) in your .js-file.
+then call 
+  fundwork(costLocation,costLink,message,neededBuffer) 
+in your .js-file.
 
 Fundwork will try to load a costs.json file to get the data needed to display. You will need to prepare this file, before using fundwork. Find info here:  [FundworkCostTemplate](https://github.com/TheBlune/FundworkCostTemplate)
 
