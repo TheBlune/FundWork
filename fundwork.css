@@ -45,13 +45,6 @@
 section.fwsummary {
   display: flex; /*flex-wrap:wrap for responsive*/
   justify-content: space-between;
-  /*flex-wrap: wrap;*/
-}
-section.fwsummary div.fwcosts,
-section.fwsummary div.fwcapital,
-section.fwsummary div.fwoperation {
-  /*flex: 0 0 calc(960px * 999 - 100% * 999);*/
-  white-space: nowrap;
 }
 
 section.fwsummary .fwcapital .fw1 span {
@@ -62,7 +55,6 @@ section.fwmcosts .fwmcostscontainer {
   display: flex; /*flex-wrap:wrap for responsive*/
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   margin-top: 40px;
 }
 #gitcostsbutton {
@@ -75,7 +67,6 @@ section.fwcapital .fwcapitalcontainer {
   display: flex; /*flex-wrap:wrap for responsive*/
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   margin-top: 40px;
 }
 section.fwmcosts #fwpie {
@@ -97,7 +88,7 @@ section.fwmcosts .fwcosttable {
   font-size: 1.5rem;
 }
 section.fwcapital .fwcapitaltable {
-  flex:2 1 300px;
+  flex:2 1 20%;
   padding-left: 2%;
   font-size: 1.5rem;
   position:relative;
@@ -127,8 +118,20 @@ section.fwcapital .fwcapitaltable table:last-child {
   margin-top: 10px;
 }
 
-@media (min-width: 576px) {
-  section.fwsummary {
-    display:block:
+@media (max-width: 767.98px)  { /*(min-width: 576px) */
+  section.fwsummary,
+  section.fwcapital .fwcapitalcontainer,
+  section.fwmcosts .fwmcostscontainer {
+    display:block;
+  }
+  section.fwmcosts #fwpie,
+  section.fwcapital #fwline,
+  section.fwmcosts .fwcosttable,
+  section.fwcapital .fwcapitaltable {
+    width: 100%;
+    padding-left: 0;
+  }
+  section.fwsummary > div {
+    width: 100%;
   }
 }
