@@ -5,6 +5,7 @@
 
  - fully responsive One-Pager Template, Short-Report-Patches and Status-Badges for you to include where needed
  - Method to organize costs on Github (with a free account there)
+ 
  In The future:
  - Offline-tool, to help updating finances easily
 
