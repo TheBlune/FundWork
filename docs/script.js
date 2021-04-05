@@ -15,7 +15,6 @@ $( document ).ready(function() {
   +'Please do not make any new donations to this demo.<br>'
   +'Consider supporting other projects: You can find a list of websites & services using this kind of report on the <a href="https://github.com/TheBlune/FundWork">FundWork-Repository</a>';
 
-  console.log(altmessage);
   //initiate
   fundwork("Github","TheBlune/FundworkCostTemplate/TheBluneProjectWebsite","https://theblune.github.io/FundWork/",message,2);
   //TheBlune/FundworkCostTemplate/main
