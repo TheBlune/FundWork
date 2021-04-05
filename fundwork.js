@@ -90,7 +90,7 @@ function getReport(data,costLocation,message,neededBuffer) {
   +'<section class="fwmcosts"><span class="lastupdated">last updated '+getTimeDiff(new Date(data.costsdate))+'</span>'
   +'<div class="fw1">Costs <span>(per Month)</span></div>'
   +'<div class="fwmcostscontainer"><div id="fwpie"><canvas id="fwPieChart"></canvas></div><div class="fwcosttable">'+getCostTable(data)+'</div></div>'
-  +'<a id="gitcostsbutton" class="btn btn-secondary" href="'+repolink+'" role="button">Help to optimize costs</a></section>'
+  +getRepoLink(repolink)+'</section>'
   +'<section class="fwcapital"><span class="lastupdated">last updated '+getTimeDiff(new Date(data.fdate))+'</span>'
   +'<div class="fw1">Capital</div><div class="fw3">'+getCapital(data)+data.currency+' '+getCapitalChangeSpan(data)+'</div>'
   +'<div class="fwcapitalcontainer"><div id="fwline"><canvas id="fwLineChart"></canvas></div>'
@@ -470,6 +470,11 @@ function getprojectionNote(data) {
   if(getUndocumentedMonths(data)>0) {
     resultString = '<span> (projected)</span>';
     return resultString;
+  }
+}
+function getRepoLink(repolink) {
+  if(!isEmptyUndy(repolink)) {
+    return '<a id="gitcostsbutton" class="btn btn-secondary" href="'+repolink+'" role="button">Help to optimize costs</a>';
   }
 }
 function isEmpty(obj) {
