@@ -118,6 +118,31 @@ section.fwcapital .fwcapitaltable table:last-child {
   margin-top: 10px;
 }
 
+a.reportlink {
+  color: black;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.8rem;
+}
+div.fpatch > h1,
+div.fbadge > h1 {
+  margin-bottom: 30px;
+}
+div.fpatch > section.fwsummary {
+  border-radius: 24px;
+  border: 4px dashed grey;
+  padding: 24px;
+}
+section.fwbadge {
+  position: relative;
+  width: 20rem;
+  border-radius: 24px;
+  border: 4px dashed grey;
+  padding: 24px;
+  display:block;
+}
+
 @media (max-width: 767.98px)  { /*(min-width: 576px) */
   section.fwsummary,
   section.fwcapital .fwcapitalcontainer,

@@ -1,4 +1,4 @@
-function fundwork(costLocation,costLink,message,neededBuffer){
+function fundwork(costLocation,costLink,reportLink,message,neededBuffer){
   /*
   1. Method searches for elements with classes "freport","fpatch" or "fbadge"
   2. then gets financial data from costURL
@@ -14,10 +14,10 @@ function fundwork(costLocation,costLink,message,neededBuffer){
     }
 
     $.getJSON( costURL, function( data ) {
-      console.log(data)
+      //console.log(data)
 
       //Append Elements
-      $(".freport").append(getReport(data,costLocation,neededBuffer));
+      $(".freport").append(getReport(data,costLocation,message,neededBuffer));
 
       //Prepare Pie-Chart data
       costdata = getcostdataset(data);
@@ -79,8 +79,8 @@ function fundwork(costLocation,costLink,message,neededBuffer){
         },
       });
 
-      $(".fpatch").append(getPatch(data));
-      $(".fbadge").append(getBadge(data));
+      $(".fpatch").append(getPatch(data,reportLink,neededBuffer));
+      $(".fbadge").append(getBadge(data,reportLink,neededBuffer));
     }).fail(function(jqxhr, textStatus, error ) {
       var err = textStatus + ", " + error;
       console.log( "Request Failed: " + err );
@@ -88,7 +88,7 @@ function fundwork(costLocation,costLink,message,neededBuffer){
   }
 }
 
-function getReport(data,costLocation,neededBuffer) {
+function getReport(data,costLocation,message,neededBuffer) {
   //Insert Header
   report = '<section class="fwheader">'+message+'</section>'+
   '<section class="fwsummary"><div class="fwcosts"><div class="fw3">Costs</div><div class="fw1">'+data.totalcosts+'€/Mo.</div></div>'
@@ -101,67 +101,87 @@ function getReport(data,costLocation,neededBuffer) {
   +'<section class="fwcapital"><span class="lastupdated">last updated '+getTimeDiff(new Date(data.fdate))+'</span>'
   +'<div class="fw1">Capital</div><div class="fw3">'+getCapital(data)+data.currency+' '+getCapitalChangeSpan(data)+'</div>'
   +'<div class="fwcapitalcontainer"><div id="fwline"><canvas id="fwLineChart"></canvas></div>'
-  +'<div class="fwcapitaltable"><div class="fw3">Capital sources</div>'+getCapitalTable(data)+'</div></div></section>';
+  +'<div class="fwcapitaltable">'+getCapitalTable(data)+'</div></div></section>';
   //report.append($("div.fwcosts"));
   return report;
 }
-function getPatch(data) {
+function getPatch(data,reportLink,neededBuffer) {
+  patch = '<section class="fwsummary"><div class="fwcosts"><div class="fw3">Costs</div><div class="fw1">'+data.totalcosts+'€/Mo.</div></div>'
+  +'<div class="fwcapital"><div class="fw3">Capital'+getprojectionNote(data)+'</div>'+getCapitalSpan(data,neededBuffer)+'</div>'
+  +'<div class="fwoperation"><div class="fw3">Operational for</div>'+getOperationTimeSpan(data,neededBuffer)+'</div><a href="'+reportLink+'" class="reportlink">See Report</a></section>';
 
+  return patch;
 }
-function getBadge(data) {
+function getBadge(data,reportLink,neededBuffer) {
+  patch = '<section class="fwbadge">'
+  +'<div class="fwoperation"><div class="fw3">Operational for</div>'+getOperationTimeSpan(data,neededBuffer)+'</div><a href="'+reportLink+'" class="reportlink">See Report</a></section>';
 
+  return patch;
 }
 function getCapital(data) {
   //Estimate the development, if data is not up to date
   numMonths = getUndocumentedMonths(data);
   monthlyIncome = getRecurringIncome(data);
   projectedCapital = data.currentcapital+numMonths*(monthlyIncome-data.totalcosts)
-  return projectedCapital;
+
+  if(data.capitalsources.length !== 0 ) {
+    return projectedCapital;
+  } else {
+    //There have been no capital sources yet. So there is no capital. If you want to show that you've funded this project yourself, mark it as capital source.
+    return data.currentcapital;
+  }
+
 }
 function getCapitalSpan(data,neededBuffer) {
 
     if (getOperationTime(data)>=neededBuffer) {
       resultString = '<div class="fw1 fwgreen">'+getCapital(data)+data.currency+'</div>';
     } else {
-      resultString = '<div class="fw1 fwred">'+getCapital(data)+data.currency+'</div><div class=2note">(projected)</div>';
+      resultString = '<div class="fw1 fwred">'+getCapital(data)+data.currency+'</div>';
     }
 
   return resultString;
 }
 function getCapitalChangeSpan(data) {
 
-  if (getMonthDiff(new Date(),new Date(data.capitalsources[data.capitalsources.length-1].month))===1) {
-    totalincome = 0;
-    $.each(data.capitalsources[data.capitalsources.length-1].sources, function( index, value ) {
-      totalincome+=this.amount;
-    });
-    change = totalincome-data.totalcosts;
+  if(data.capitalsources.length !== 0) {
+    if (getMonthDiff(new Date(),new Date(data.capitalsources[data.capitalsources.length-1].month))===1) {
+      totalincome = 0;
+      $.each(data.capitalsources[data.capitalsources.length-1].sources, function( index, value ) {
+        totalincome+=this.amount;
+      });
+      change = totalincome-data.totalcosts;
 
-    if (change < 0) {
-      return '<span class="fwred">('+change+data.currency+' to last month)</span>';
+      if (change < 0) {
+        return '<span class="fwred">('+change+data.currency+' to last month)</span>';
+      } else {
+        return '<span class="fwgreen">('+change+data.currency+' to last month)</span>';
+      }
+
     } else {
-      return '<span class="fwgreen">('+change+data.currency+' to last month)</span>';
-    }
+      change = getRecurringIncome(data)-data.totalcosts;
 
+      if (change < 0) {
+        return '<span class="fwred">('+change+data.currency+' to last month; projected)</span>';
+      } else {
+        return '<span class="fwgreen">('+change+data.currency+' to last month; projected)</span>';
+      }
+    }
   } else {
-    change = getRecurringIncome(data)-data.totalcosts;
-
-    if (change < 0) {
-      return '<span class="fwred">('+change+data.currency+' to last month; projected)</span>';
-    } else {
-      return '<span class="fwgreen">('+change+data.currency+' to last month; projected)</span>';
-    }
+    return '';
   }
 
 
 }
 function getRecurringIncome(data) {
   income = 0;
+  if (data.capitalsources.length !== 0) {
   $.each(data.capitalsources[data.capitalsources.length-1].sources, function( index, value ) {
     if (this.recurring){
       income += this.amount;
     }
   });
+  }
   return income;
 }
 function getOperationTime(data) {
@@ -346,63 +366,78 @@ function getcapitaldataset(data){
   amountarray = [];
 
   currentcapital = data.startcapital;
-  $.each(data.capitalsources, function( index, value ) {
-    if(((new Date(this.month)).getMonth()+1)>11) {
-      labelarray.push(getMonthName(0));
-    } else {
-      labelarray.push(getMonthName((new Date(this.month)).getMonth()+1));
-    }
-    monthlyIncome = 0;
-    $.each(this.sources, function( index, value ) {
-      monthlyIncome += this.amount;
+  if (data.capitalsources.length !== 0) {
+    $.each(data.capitalsources, function( index, value ) {
+      if(((new Date(this.month)).getMonth()+1)>11) {
+        labelarray.push(getMonthName(0));
+      } else {
+        labelarray.push(getMonthName((new Date(this.month)).getMonth()+1));
+      }
+      monthlyIncome = 0;
+      $.each(this.sources, function( index, value ) {
+        monthlyIncome += this.amount;
+      });
+      currentcapital += monthlyIncome-data.totalcosts;
+      amountarray.push(currentcapital);
     });
-    currentcapital += monthlyIncome-data.totalcosts;
-    amountarray.push(currentcapital);
-  });
 
-  //If necessary: Add projection data for missing months
-  if(getMonthDiff(new Date(),new Date(data.fdate))>0) {
-    projectionarray = amountarray.slice(0);;
-    for (var i = -getMonthDiff(new Date(),new Date(data.fdate))+1; i < 1; i++) {
-      labelarray.push(getMonthName((new Date()).getMonth()+i));
-    }
-    for (var i = 1; i < getMonthDiff(new Date(),new Date(data.fdate))+1; i++) {
-      console.log(i);
-      projectionarray.push(data.currentcapital+i*(getRecurringIncome(data)-data.totalcosts));
-    }
-    console.log(projectionarray);
 
-    //Cut off data that is older than 12 months
-    if (labelarray.length>12) {
-      labelarray = labelarray.slice(labelarray.length-12,labelarray.length);
-      amountarray = amountarray.slice(amountarray.length-12,amountarray.length);
-    }
+    //If necessary: Add projection data for missing months
+    if(getMonthDiff(new Date(),new Date(data.fdate))>0) {
+      projectionarray = amountarray.slice(0);;
+      for (var i = -getMonthDiff(new Date(),new Date(data.fdate))+1; i < 1; i++) {
+        labelarray.push(getMonthName((new Date()).getMonth()+i));
+      }
+      for (var i = 1; i < getMonthDiff(new Date(),new Date(data.fdate))+1; i++) {
+        console.log(i);
+        projectionarray.push(data.currentcapital+i*(getRecurringIncome(data)-data.totalcosts));
+      }
+      console.log(projectionarray);
 
-    data = {
-        labels: labelarray,
-        datasets: [{
-            data: amountarray,
-            label: "data",
-            borderColor: '#36A2EB',
-            backgroundColor: '#36A2EB'
-        },
-        {
-          data: projectionarray,
-          label: "projection",
-        }
-      ]
-    };
+      //Cut off data that is older than 12 months
+      if (labelarray.length>12) {
+        labelarray = labelarray.slice(labelarray.length-12,labelarray.length);
+        amountarray = amountarray.slice(amountarray.length-12,amountarray.length);
+      }
+
+      data = {
+          labels: labelarray,
+          datasets: [{
+              data: amountarray,
+              label: "data",
+              borderColor: '#36A2EB',
+              backgroundColor: '#36A2EB'
+          },
+          {
+            data: projectionarray,
+            label: "projection",
+          }
+        ]
+      };
+    } else {
+      //Cut off data that is older than 12 months
+      if (labelarray.length>12) {
+        labelarray = labelarray.slice(labelarray.length-12,labelarray.length);
+        amountarray = amountarray.slice(amountarray.length-12,amountarray.length);
+      }
+
+      data = {
+          labels: labelarray,
+          datasets: [{
+              data: amountarray,
+              label: "data",
+              borderColor: '#36A2EB',
+              backgroundColor: '#36A2EB'
+          }
+        ]
+      };
+    }
   } else {
-    //Cut off data that is older than 12 months
-    if (labelarray.length>12) {
-      labelarray = labelarray.slice(labelarray.length-12,labelarray.length);
-      amountarray = amountarray.slice(amountarray.length-12,amountarray.length);
-    }
-
+    //No data yet.
     data = {
-        labels: labelarray,
+        labels: [],
         datasets: [{
-            data: amountarray,
+            data: [],
             label: "data",
             borderColor: '#36A2EB',
             backgroundColor: '#36A2EB'
@@ -418,19 +453,23 @@ function getCapitalTable(data){
   let table = '';
   ccategory = '';
   sum = 0;
-  $.each(data.capitalsources[0].sources, function( index, value ) {
-    if(this.category != ccategory){
-      ccategory = this.category;
-      if (index != 0) {
-        table+='</tbody></table>';
-      }
-      table+='<table><thead><tr><th>'+this.category+'</th><th></th></tr></thead><tbody>';
-    }
 
-    table+='<tr><td title="'+this.info+'">'+this.name+'</td><td>'+this.amount+data.currency+'</td></tr>';
-    sum+=this.amount;
-  });
+  if (data.capitalsources.length !== 0) {
+    $.each(data.capitalsources[0].sources, function( index, value ) {
+      if(this.category != ccategory){
+        ccategory = this.category;
+        if (index != 0) {
+          table+='</tbody></table>';
+        }
+        table+='<div class="fw3">Capital sources</div><table><thead><tr><th>'+this.category+'</th><th></th></tr></thead><tbody>';
+      }
+
+      table+='<tr><td title="'+this.info+'">'+this.name+'</td><td>'+this.amount+data.currency+'</td></tr>';
+      sum+=this.amount;
+    });
+
   table+='</tbody></table><table><thead><tr><th>Total</th><th>'+sum+data.currency+'</th></tr></thead><tbody></tbody></table>';
+  }
   return table;
 }
 function getprojectionNote(data) {
@@ -438,5 +477,37 @@ function getprojectionNote(data) {
   if(getUndocumentedMonths(data)>0) {
     resultString = '<span> (projected)</span>';
     return resultString;
+  }
+}
+function isEmpty(obj) {
+
+  // null and undefined are "empty"
+  if (obj == null) return true;
+
+  // Assume if it has a length property with a non-zero value
+  // that that property is correct.
+  if (obj.length > 0) return false;
+  if (obj.length === 0) return true;
+
+  // If it isn't an object at this point
+  // it is empty, but it can't be anything *but* empty
+  // Is it empty?  Depends on your application.
+  if (typeof obj !== "object") return true;
+
+  // Otherwise, does it have any properties of its own?
+  // Note that this doesn't handle
+  // toString and valueOf enumeration bugs in IE < 9
+  for (var key in obj) {
+    if (hasOwnProperty.call(obj, key)) return false;
+  }
+
+  return true;
+}
+function isEmptyUndy(tested) {
+  //Checks if property of komponente is empty or undefined
+  if (tested === "" || tested === undefined) {
+    return true;
+  } else {
+    return false;
   }
 }
