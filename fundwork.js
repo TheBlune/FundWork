@@ -382,10 +382,8 @@ function getcapitaldataset(data){
         labelarray.push(getMonthName((new Date()).getMonth()+i));
       }
       for (var i = 1; i < getMonthDiff(new Date(),new Date(data.fdate))+1; i++) {
-        console.log(i);
         projectionarray.push(data.currentcapital+i*(getRecurringIncome(data)-data.totalcosts));
       }
-      console.log(projectionarray);
 
       //Cut off data that is older than 12 months
       if (labelarray.length>12) {
