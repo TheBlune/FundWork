@@ -15,7 +15,7 @@ The financial report gains user trust, let’s them participate in optimizing yo
 
 ![Image of the Full Report](https://github.com/TheBlune/FundWork/blob/5385f20bf162f480c55fde7553e8c69ae2ca4bf4/docs/demo-image.png)
 
- keywords: finances, cost reporting, sustaining microsites and microservices
+ keywords: finances, cost reporting, sustaining microsites and microservices, controlling
 
 ## Getting Started
 Fundwork relies on [Jquery](https://jquery.com/), [Bootstrap](https://getbootstrap.com/) and the beautiful [Chart.js](https://www.chartjs.org/). So make Sure to have them ready before loading a fundwork report, patch or badge.
