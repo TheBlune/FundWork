@@ -35,7 +35,7 @@ Fundwork will try to load a costs.json file to get the data needed to display. Y
 Fundwork takes 4 arguments:
 
 1. costLocation: Put "Github" here, if your costs.json-file is hosted on Github
-2. costLink: The Permalink to the costs.json-file. Can be either a direct link or in case of costLocation = "Github":  [Repository]/[relativePath], like e.g. for the demo here: "TheBlune/FundworkCostTemplate/main"
+2. costLink: The link to the costs.json-file. Can be either a direct link or in case of costLocation = "Github" it is the raw-link:  [Repository]/[relativePath], like e.g. for the demo here: "TheBlune/FundworkCostTemplate/main"
 3. reportLink: If you only show a Patch or Batch: set a link to the full financial report here, like e.g. https://theblune.github.io/FundWork/ 
 4. Message: A personalizable Message to add to the top of a fundwork-report. See [Example fundwork.js call for templates](https://github.com/TheBlune/FundWork/blob/8c8cef6722daf90d903f8a8abe49ae581e295357/docs/script.js)
 5. neededBuffer: Is used to emphasize to the readers, that the project is either "under-funded" or already enough funded. Put the number of Months in here, that you want your project to be a operational for (based on current Capital).
