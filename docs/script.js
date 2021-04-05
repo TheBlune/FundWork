@@ -16,5 +16,6 @@ $( document ).ready(function() {
   +'Consider supporting other projects: You can find a list of websites & services using this kind of report on the <a href="https://github.com/TheBlune/FundWork">FundWork-Repository</a>';
 
   //initiate
-  fundwork("Github","TheBlune/FundworkCostTemplate/main","https://theblune.github.io/FundWork/",message,2);
+  fundwork("Github",'https://raw.githubusercontent.com/TheBlune/FundworkCostTemplate/main/costs.json',"https://github.com/TheBlune/FundworkCostTemplate/","https://theblune.github.io/FundWork/",message,2);
+;
 });

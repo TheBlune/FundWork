@@ -1,17 +1,10 @@
-function fundwork(costLocation,costLink,reportLink,message,neededBuffer){
+function fundwork(costLocation,costURL,repolink,reportLink,message,neededBuffer){
   /*
   1. Method searches for elements with classes "freport","fpatch" or "fbadge"
   2. then gets financial data from costURL
   3. and inserts its reports into these elements
   */
   if($(".freport").length || $(".fpatch").length || $(".fbadge").length) {
-
-    if (costLocation === 'Github') {
-      //Preformat cost URL
-      costURL = 'https://raw.githubusercontent.com/'+costLink+'/costs.json';
-    } else {
-      costURL = costLink;
-    }
 
     $.getJSON( costURL, function( data ) {
       //console.log(data)
@@ -97,7 +90,7 @@ function getReport(data,costLocation,message,neededBuffer) {
   +'<section class="fwmcosts"><span class="lastupdated">last updated '+getTimeDiff(new Date(data.costsdate))+'</span>'
   +'<div class="fw1">Costs <span>(per Month)</span></div>'
   +'<div class="fwmcostscontainer"><div id="fwpie"><canvas id="fwPieChart"></canvas></div><div class="fwcosttable">'+getCostTable(data)+'</div></div>'
-  +'<a id="gitcostsbutton" class="btn btn-secondary" href="https://github.com/'+costLocation+'" role="button">Help to optimize costs</a></section>'
+  +'<a id="gitcostsbutton" class="btn btn-secondary" href="'+costLink+'" role="button">Help to optimize costs</a></section>'
   +'<section class="fwcapital"><span class="lastupdated">last updated '+getTimeDiff(new Date(data.fdate))+'</span>'
   +'<div class="fw1">Capital</div><div class="fw3">'+getCapital(data)+data.currency+' '+getCapitalChangeSpan(data)+'</div>'
   +'<div class="fwcapitalcontainer"><div id="fwline"><canvas id="fwLineChart"></canvas></div>'
