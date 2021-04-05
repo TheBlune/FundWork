@@ -10,7 +10,7 @@ function fundwork(costLocation,costURL,repolink,reportLink,message,neededBuffer)
       //console.log(data)
 
       //Append Elements
-      $(".freport").append(getReport(data,costLocation,message,neededBuffer));
+      $(".freport").append(getReport(data,costLocation,repolink,message,neededBuffer));
 
       //Prepare Pie-Chart data
       costdata = getcostdataset(data);
@@ -81,7 +81,7 @@ function fundwork(costLocation,costURL,repolink,reportLink,message,neededBuffer)
   }
 }
 
-function getReport(data,costLocation,message,neededBuffer) {
+function getReport(data,costLocation,repolink,message,neededBuffer) {
   //Insert Header
   report = '<section class="fwheader">'+message+'</section>'+
   '<section class="fwsummary"><div class="fwcosts"><div class="fw3">Costs</div><div class="fw1">'+data.totalcosts+'€/Mo.</div></div>'
