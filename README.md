@@ -13,12 +13,12 @@ Take a look at the [Demo](https://theblune.github.io/FundWork/).
 
 The financial report gains user trust, let’s them participate in optimizing your costs and lets potential donors/members/etc. make an informed decision on if they want to help sustaining this project.
 
-![Image of the Full Report](https://github.com/TheBlune/FundWork/blob/86aec72fbf992ade71bfe6ad18c90a80fe4e1f20/docs/report-image.png)
+![Image of the Full Report](https://github.com/TheBlune/FundWork/blob/5385f20bf162f480c55fde7553e8c69ae2ca4bf4/docs/demo-image.png)
 
- keywords: finances, cost reporting, sustaining microsites and microservices
+ keywords: finances, cost reporting, sustaining microsites and microservices, controlling
 
 ## Getting Started
-Fundwork relies on [Jquery](https://jquery.com/) and [Bootstrap](https://getbootstrap.com/). So make Sure to have them ready before loading a fundwork report, patch or badge.
+Fundwork relies on [Jquery](https://jquery.com/), [Bootstrap](https://getbootstrap.com/) and the beautiful [Chart.js](https://www.chartjs.org/). So make Sure to have them ready before loading a fundwork report, patch or badge.
 
 ### CDN
 Add these to the html-page you wish to use Fundwork on:
@@ -35,9 +35,10 @@ Fundwork will try to load a costs.json file to get the data needed to display. Y
 Fundwork takes 4 arguments:
 
 1. costLocation: Put "Github" here, if your costs.json-file is hosted on Github
-2. costLink: The Permalink to the costs.json-file. Can be either a direct link or in case of costLocation = "Github":  [Repository]/[relativePath], like e.g. for the demo here: "TheBlune/FundworkCostTemplate/main"
-3. Message: A personalizable Message to add to the top of a fundwork-report. See [Example fundwork.js call for templates](https://github.com/TheBlune/FundWork/blob/8c8cef6722daf90d903f8a8abe49ae581e295357/docs/script.js)
-4. neededBuffer: Is used to emphasize to the readers, that the project is either "under-funded" or already enough funded. Put the number of Months in here, that you want your project to be a operational for (based on current Capital).
+2. costLink: The link to the costs.json-file. Can be either a direct link or in case of costLocation = "Github" it is the raw-link:  [Repository]/[relativePath], like e.g. for the demo here: "TheBlune/FundworkCostTemplate/main"
+3. reportLink: If you only show a Patch or Batch: set a link to the full financial report here, like e.g. https://theblune.github.io/FundWork/ 
+4. Message: A personalizable Message to add to the top of a fundwork-report. See [Example fundwork.js call for templates](https://github.com/TheBlune/FundWork/blob/8c8cef6722daf90d903f8a8abe49ae581e295357/docs/script.js)
+5. neededBuffer: Is used to emphasize to the readers, that the project is either "under-funded" or already enough funded. Put the number of Months in here, that you want your project to be a operational for (based on current Capital).
 
 ## Usage Examples 
 Here you may find real-world examples of pages using this framework.
